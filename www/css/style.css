@@ -1,0 +1,17 @@
+/* Empty. Add your own CSS if you like */
+.charts .bar button{
+  background-color: transparent;
+  border:0;
+}
+.charts .bar button.activated{
+  background-color: transparent;
+}
+.charts .bar button i{
+  vertical-align: middle;
+}
+.charts .bar button i.icon:before{
+  font-size: 2em;
+}
+.charts .bar h1.title{
+  margin:0 25vw;
+}
