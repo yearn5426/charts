@@ -8,7 +8,28 @@ angular.module('starter.controllers', [])
   $scope.showSelect = false;
   $scope.data = {
     startDate:'2016年7月',
-    endDate:'2016年8月'
+    endDate:'2016年8月',
+    expenseList:[{
+      category:'餐饮',
+      percentage:'20%',
+      sum:360.00
+    },{
+      category:'办公',
+      percentage:'8%',
+      sum:45.00
+    },{
+      category:'交通',
+      percentage:'30%',
+      sum:359.00
+    },{
+      category:'房租',
+      percentage:'10%',
+      sum:200.00
+    },{
+      category:'通讯',
+      percentage:'29%',
+      sum:420.00
+    }]
   };
 
   $scope.toggleSelect = function(){
@@ -22,7 +43,7 @@ angular.module('starter.controllers', [])
     var chart = echarts.init(document.getElementsByClassName(className)[0]);
     var option = {
       title:{
-        text:'aa',
+        text:'￥1358.00',
         textStyle:{
           fontSize:20
         },
@@ -52,6 +73,7 @@ angular.module('starter.controllers', [])
     {value:135},
     {value:1548}
   ]);
+
   // app.title = '正负条形图';
   //
   // option = {

@@ -45,6 +45,48 @@
       width: 100%;
       height: 70vw;
     }
+    .charts .expense-list{
+      width:100%;
+      border-top:1px solid #b2b2b2;
+    }
+    .charts .expense-list-item{
+      position: relative;
+      margin:0 10px;
+      height: 60px;
+      line-height: 60px;
+      font-size: 0;
+      border-bottom: 1px solid #b2b2b2;
+    }
+    .charts .expense-list-item i{
+      position: absolute;
+      top:10px;
+      display: inline-block;
+      background-color: #0a9dc7;
+      border-radius:50%;
+      height: 40px;
+      width: 40px;
+      line-height: 40px;
+      text-align: center;
+      font-size: 30px;
+      color: #fff;
+    }
+    .charts .expense-list-item i:before{
+      vertical-align: baseline;
+    }
+    .charts .expense-list-item .category{
+      font-size: 17px;
+      margin-left:50px;
+      margin-right: 10px;
+    }
+    .charts .expense-list-item .percentage{
+      color: #aaa;
+      font-size: 15px;
+    }
+    .charts .expense-list-item .sum{
+      font-size: 17px;
+      float: right;
+      color: #c7ac2c;
+    }
   </style>
   <div class="personal-or-department" ng-click="toggleSelect()" ng-show="showSelect">
     <button ng-click="change(0, $event)">个人</button>
@@ -55,7 +97,11 @@
       <span class="start-date" ng-bind="data.startDate"></span>至<span class="end-data" ng-bind="data.endDate"></span><i class="icon ion-arrow-down-b"></i>
     </div>
     <div class="container1">
-
+    </div>
+    <div class="expense-list">
+      <div ng-repeat="expense in data.expenseList" class="expense-list-item">
+        <i class="icon ion-ios-pie-outline"></i><span class="category">{{expense.category}}</span><span class="percentage">{{expense.percentage}}</span><span class="sum">{{expense.sum}}</span>
+      </div>
     </div>
   </ion-content>
 </ion-view>
