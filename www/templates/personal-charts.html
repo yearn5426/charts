@@ -1,0 +1,118 @@
+<ion-view view-title="Charts" class="charts">
+  <ion-header-bar class="bar-stable">
+    <button><i class="icon ion-ios-arrow-left"></i></button>
+    <h1 class="title" ng-click="toggleSelect()">{{personalOrDepartment}}<i class="icon ion-ios-arrow-down"></i></h1>
+  </ion-header-bar>
+
+  <div class="personal-or-department" ng-click="toggleSelect()" ng-show="showSelect">
+    <button ng-click="change(0, $event)">个人</button>
+    <button ng-click="change(1, $event)">部门</button>
+  </div>
+  <div class="personal-date-select" ng-show="personalOrDepartment == '个人'">
+    <span class="start-date" ng-bind="data.startDate" ng-click="openStartDatePicker()"></span>至<span class="end-data" ng-bind="data.endDate" ng-click="openEndDatePicker()"></span><i class="icon ion-arrow-down-b" ng-click="openDateSelect()"></i>
+    <div class="date-select-list popup-select" ng-if="showDateSelect">
+      <p>本月支出</p>
+      <p>上月支出</p>
+      <p>本季度支出</p>
+      <p>本年度支出</p>
+    </div>
+  </div>
+  <div class="charts-select" ng-show="personalOrDepartment == '部门'">
+    <div class="budget-select" ng-if="chartsSelect == '预算'">
+      <button><i class="icon ion-ios-arrow-left"></i></button><span>2016年度预算</span><button><i class="icon ion-ios-arrow-right"></i></button>
+    </div>
+    <div class="people-select" ng-if="chartsSelect == '人员'">
+      <span class="start-date" ng-bind="data.startDate"></span>至<span class="end-data" ng-bind="data.endDate"></span><i class="icon ion-arrow-down-b"></i>
+      <div class="popup-select" ng-show="">
+        <p>近三个月</p>
+        <p>近六个月</p>
+        <p>近十二个月</p>
+      </div>
+    </div>
+    <div class="category-select" ng-if="chartsSelect == '类别'">
+      <span class="start-date" ng-bind="data.startDate"></span>至<span class="end-data" ng-bind="data.endDate"></span><i class="icon ion-arrow-down-b"></i>
+      <div class="popup-select" ng-show="">
+        <p>近三个月</p>
+        <p>近六个月</p>
+        <p>近十二个月</p>
+      </div>
+    </div>
+    <div class="current-select" ng-click="openChartsSelect()">
+      {{chartsSelect}}<i class="icon ion-arrow-down-b"></i>
+    </div>
+    <div class="popup-select" ng-if="showChartsSelect">
+      <p ng-click="selectCharts(0)">预算</p>
+      <p ng-click="selectCharts(1)">人员</p>
+      <p ng-click="selectCharts(2)">类别</p>
+    </div>
+  </div>
+  <ion-content>
+    <div class="department-select" ng-show="personalOrDepartment == '部门'">
+      Yunmart部门<i class="icon ion-arrow-down-b"></i>
+    </div>
+    <div class="container1" ng-show="(personalOrDepartment == '部门' && chartsSelect =='类别')||personalOrDepartment == '个人'">
+    </div>
+    <div class="department-bar" ng-show="personalOrDepartment == '部门' && chartsSelect == '预算'" ng-click="changeWidth()">
+      <p>年度预算</p>
+      <div class="year-budget"><p></p></div>
+      <p>截止至目前，已用预算</p>
+      <div class="used-budget"><p></p></div>
+      <p class="remainder-budget">剩余预算金额：</p>
+      <p class="over-budget">超支预算，金额：</p>
+      <div class="over-budget"></div>
+    </div>
+    <div class="expense-list" ng-show="(personalOrDepartment == '部门' && chartsSelect =='类别') || personalOrDepartment == '个人'">
+      <div class="show-average">
+        人均<i class="icon ion-ios-eye-outline"></i>
+      </div>
+      <div class="expense-list-item">
+        <i class="icon ion-ios-pie-outline"></i><span class="category">{{data.expenseList[0].category}}</span><span class="percentage">{{data.expenseList[0].percentage}}</span><span class="sum">{{data.expenseList[0].sum | currency : '￥'}}</span>
+        <span class="average-person-expense" ng-show="personalOrDepartment == '部门'">1111</span>
+      </div>
+      <div class="expense-list-item">
+        <i class="icon ion-ios-pie-outline"></i><span class="category">{{data.expenseList[1].category}}</span><span class="percentage">{{data.expenseList[1].percentage}}</span><span class="sum">{{data.expenseList[1].sum | currency : '￥'}}</span>
+        <span class="average-person-expense" ng-show="personalOrDepartment == '部门'">111</span>
+      </div>
+      <div class="expense-list-item">
+        <i class="icon ion-ios-pie-outline"></i><span class="category">{{data.expenseList[2].category}}</span><span class="percentage">{{data.expenseList[2].percentage}}</span><span class="sum">{{data.expenseList[2].sum | currency : '￥'}}</span>
+        <span class="average-person-expense" ng-show="personalOrDepartment == '部门'">11</span>
+      </div>
+      <div class="expense-list-item">
+        <i class="icon ion-ios-pie-outline"></i><span class="category">{{data.expenseList[3].category}}</span><span class="percentage">{{data.expenseList[3].percentage}}</span><span class="sum">{{data.expenseList[3].sum | currency : '￥'}}</span>
+        <span class="average-person-expense" ng-show="personalOrDepartment == '部门'">111</span>
+      </div>
+      <div class="expense-list-item">
+        <i class="icon ion-ios-pie-outline"></i><span class="category">{{data.expenseList[4].category}}</span><span class="percentage">{{data.expenseList[4].percentage}}</span><span class="sum">{{data.expenseList[4].sum | currency : '￥'}}</span>
+        <span class="average-person-expense" ng-show="personalOrDepartment == '部门'">1</span>
+      </div>
+    </div>
+    <div class="container2" ng-show="personalOrDepartment == '部门' && chartsSelect =='预算'">
+    </div>
+    <style>
+      .charts .expense-list .show-average{
+        position: absolute;
+        top: -50px;
+        color: #555;
+        height: 40px;
+        line-height: 40px;
+        font-size: 15px;
+        right:10px;
+      }
+      .charts .expense-list .show-average i{
+        display: inline-block;
+        margin-left:10px;
+        font-size: 30px;
+        height: 40px;
+        vertical-align: top;
+      }
+    </style>
+    <div class="people-count" ng-show="personalOrDepartment == '部门' && chartsSelect =='人员'">
+      <span>人数 {{data.peopleData.length}}</span><span>人均 </span>
+    </div>
+    <div class="people-charts" ng-show="personalOrDepartment == '部门' && chartsSelect =='人员'">
+      <div class="people-charts-item" ng-repeat="person in data.peopleData">
+        <span>{{person.name}}</span><div class="charts-bar" ng-style="style[data.peopleData.indexOf(person)]"></div><div class="charts-expense">{{person.expense | currency:"￥"}}<br><span>{{person.percentage}}</span></div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

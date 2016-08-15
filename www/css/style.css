@@ -1,4 +1,5 @@
 /* Empty. Add your own CSS if you like */
+/* headbar样式 */
 .charts .bar button{
   background-color: transparent;
   border:0;
@@ -15,3 +16,301 @@
 .charts .bar h1.title{
   margin:0 25vw;
 }
+/* headbar样式end*/
+
+/* 弹出选择框样式 */
+.charts .popup-select{
+  z-index: 100;
+  background-color: white;
+  width: 28%;
+  padding:0;
+  text-align: center;
+  position: absolute;
+  right:0;
+  top:39px;
+  border:1px solid #b2b2b2;
+  color: #000;
+}
+.charts .popup-select p{
+  font-size: 13px;
+  margin:0;
+  padding: 5px 0;
+  border-bottom: 1px solid #b2b2b2;
+}
+.charts .popup-select p:last-child{
+  border:0;
+}
+/* 弹出选择框样式end */
+
+/* 弹出切换personalOrDepartment窗口样式 */
+.charts .personal-or-department{
+  position: fixed;
+  z-index: 9999;
+  top: 44px;
+  width: 100%;
+  background-color: transparent;
+  opacity:0.8;
+  height: 100vh;
+}
+.charts .personal-or-department button{
+  width: 100%;
+  background-color: black;
+  border:0;
+  color: #d0d0d0;
+  text-align: center;
+  padding: 11px 0 10px 0;
+}
+.charts .personal-or-department button:first-child{
+  border-bottom:1px solid #8f8f8f;
+}
+/* 弹出切换personalOrDepartment窗口样式end */
+
+.charts .personal-date-select{
+  position: absolute;
+  top:44px;
+  display: flex;
+  width: 100%;
+  height: 40px;
+  padding: 10px 40px ;
+  border-bottom:1px solid #b2b2b2;
+  justify-content:space-between;
+}
+/* 日期选择栏样式 */
+.charts .personal-date-select, .charts .category-select, .charts .people-select{
+  position: relative;
+  font-size: 13px;
+  color:#555;
+}
+.charts .personal-date-select span, .charts .category-select span, .charts .people-select span{
+  color: #000;
+  font-size: 16px;
+}
+/* 日期选择栏样式end */
+/* 日期选择栏弹出框样式 */
+.charts .people-select .popup-select, .charts .category-select .popup-select{
+  width:70%;
+  top:34px;
+  right:15%;
+}
+/* 日期选择栏弹出框样式end */
+.charts .charts-select{
+  position: absolute;
+  top:44px;
+  display: flex;
+  width: 100%;
+  height: 40px;
+  padding: 5px 0;
+  border-bottom:1px solid #b2b2b2;
+  justify-content:space-between;
+  font-size: 16px;
+}
+.charts .charts-select .budget-select, .charts .charts-select .people-select, .charts .charts-select .category-select{
+  display: flex;
+  height: 30px;
+  padding:5px 10px;
+  padding-left:20px;
+  width:70%;
+  margin:0;
+  justify-content: space-between;
+}
+.charts .charts-select div button{
+  background-color: transparent;
+  border:1px solid #b2b2b2;
+  line-height: 15px;
+}
+.charts .charts-select div button i{
+  display: inline-block;
+  vertical-align: top;
+  height: 15px;
+  line-height: 15px;
+  font-size: 0;
+}
+.charts .charts-select div button i:before{
+  font-size: 15px;
+  vertical-align: middle;
+}
+.charts .charts-select .current-select{
+  display: flex;
+  padding:5px 0;
+  width: 28%;
+  color: #555;
+  font-size: 0.9em;
+  justify-content: center;
+  border-left:1px solid #b2b2b2;
+}
+.charts ion-content.scroll-content{
+  top:84px;
+}
+.charts .department-select{
+  width:40%;
+  margin:5px auto;
+  text-align: center;
+}
+.charts .department-select i{
+  margin-left: 5px;
+}
+.charts .container1, .charts .container2{
+  width: 100%;
+  height: 70vw;
+}
+.charts .department-bar{
+  width: 100%;
+}
+.charts .department-bar{
+  padding:5vw 10px;
+  border-bottom:1px solid #b2b2b2;
+}
+.charts .department-bar p{
+  margin:10px 0;
+}
+.charts .department-bar .year-budget, .charts .department-bar .used-budget{
+  width:100%;
+  height: 30px;
+  background-color: #F1F1F1;
+}
+.charts .department-bar .year-budget p, .charts .department-bar .used-budget p{
+  width: 0;
+  height: 30px;
+  padding: 0;
+  color: white;
+  -webkit-transition: width 0.5s linear;
+  -moz-transition: width 0.5s linear;
+  -ms-transition: width 0.5s linear;
+  -o-transition: width 0.5s linear;
+  transition: width 0.5s linear;
+}
+.charts .department-bar .year-budget p{
+  background-color: #0092DB;
+}
+.charts .department-bar .used-budget p{
+  background-color: #54CFB3;
+}
+.charts .remainder-budget{
+  float: right;
+  color: #aaa;
+  font-size:14px;
+}
+.charts p.over-budget{
+  color: #FE0000;
+}
+.charts div.over-budget{
+  height: 20px;
+  width: 0;
+  background-color: #FE0000;
+  -webkit-transition: width 0.5s linear;
+  -moz-transition: width 0.5s linear;
+  -ms-transition: width 0.5s linear;
+  -o-transition: width 0.5s linear;
+  transition: width 0.5s linear;
+}
+.charts .expense-list{
+  position: relative;
+  width:100%;
+  border-top:1px solid #b2b2b2;
+}
+.charts .expense-list-item{
+  position: relative;
+  margin:0 10px;
+  height: 60px;
+  line-height: 60px;
+  font-size: 0;
+  border-bottom: 1px solid #b2b2b2;
+}
+.charts .expense-list-item:last-child{
+  border:0;
+}
+.charts .expense-list-item i{
+  position: absolute;
+  top:10px;
+  display: inline-block;
+  background-color: #0a9dc7;
+  border-radius:50%;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 0;
+  color: #fff;
+}
+.charts .expense-list-item i:before{
+  vertical-align: middle;
+  font-size: 30px;
+}
+.charts .expense-list-item .category{
+  font-size: 17px;
+  margin-left:50px;
+  margin-right: 10px;
+}
+.charts .expense-list-item .percentage{
+  color: #aaa;
+  font-size: 15px;
+}
+.charts .expense-list-item .sum{
+  font-size: 17px;
+  float: right;
+  color: #E28035;
+}
+.charts .expense-list-item .average-person-expense{
+  position: absolute;
+  height: 10px;
+  line-height: 10px;
+  font-size: 10px;
+  color: #aaa;
+  right:0;
+  bottom:5px;
+}
+
+/* 人员charts样式 */
+.charts .people-charts{
+  border-top:1px solid #b2b2b2;
+}
+.charts .people-charts .people-charts-item{
+  height: 50px;
+  padding:5px 0;
+  line-height: 40px;
+  margin:0 10px;
+  border-bottom:1px solid #b2b2b2;
+}
+.charts .people-charts .people-charts-item:last-child{
+  border-bottom: 0;
+}
+.charts .people-charts .people-charts-item span{
+  vertical-align: middle;
+}
+.charts .people-charts .people-charts-item > span{
+  display: inline-block;
+  vertical-align: top;
+  width:5em;
+}
+.charts .people-charts .people-charts-item .charts-bar{
+  display: inline-block;
+  margin-top:10px;
+  height:20px;
+  width:40%;
+}
+.charts .people-charts .people-charts-item .charts-expense{
+  display: inline-block;
+  float: right;
+  line-height: 19px;
+  color: #E28035;
+}
+.charts .people-charts .people-charts-item .charts-expense span{
+  color: #aaa;
+  float: right;
+}
+/* 人员charts样式end */
+
+/* 人数统计样式 */
+.charts .people-count{
+  width:50%;
+  margin:5px auto;
+  text-align: center;
+}
+.charts .people-count span{
+  padding:0 20px;
+}
+.charts .people-count span:first-child{
+  border-right: 1px solid #b2b2b2;
+}
+/* 人数统计样式end */
+

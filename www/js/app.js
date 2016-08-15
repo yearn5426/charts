@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('starter', ['ionic', 'starter.controllers', 'ionic-datepicker'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -23,7 +23,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   });
 })
 
-  .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+  .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, ionicDatePickerProvider) {
     $ionicConfigProvider.platform.ios.tabs.position('bottom');
     $ionicConfigProvider.platform.android.tabs.position('bottom');
     $ionicConfigProvider.platform.android.tabs.style('striped');
@@ -31,6 +31,23 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     $ionicConfigProvider.tabs.style('striped');
     $ionicConfigProvider.platform.ios.navBar.alignTitle('center');
     $ionicConfigProvider.platform.android.navBar.alignTitle('center');
+
+    var dataPickerObj = {
+      inputDate:new Date(),
+      setLabel:'Set',
+      todayLabel:'Today',
+      closeLabel:'Close',
+      mondayFirst:false,
+      weeksList: ["S", "M", "T", "W", "T", "F", "S"],
+      monthsList: ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
+      templateType: 'popup',
+      from: new Date(2012, 8, 1),
+      to: new Date(2018, 8, 1),
+      showTodayButton: true,
+      dateFormat: 'yyyy-MMMM-dd',
+      closeOnSelect: false
+    };
+    ionicDatePickerProvider.configDatePicker(dataPickerObj);
     // Ionic uses AngularUI Router which uses the concept of states
     // Learn more here: https://github.com/angular-ui/ui-router
     // Set up the various states which the app can be in.
@@ -38,14 +55,28 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     $stateProvider
 
     // setup an abstract state for the tabs directive
-      .state('charts', {
-        url: '/charts',
-        templateUrl: 'templates/charts.html',
-        controller:'ChartsCtrl'
+      .state('personal-charts', {
+        url: '/personal-charts',
+        templateUrl: 'templates/personal-charts.html',
+        controller:'PersonalChartsCtrl'
       });
+      // .state('department-charts', {
+      //   url: '/department-charts',
+      //   views: {
+      //     'department-charts': {
+      //       templateUrl: 'templates/department-charts.html',
+      //         controller:'DepartmentChartsCtrl'
+      //     }
+      //   }
+      // });
+      // .state('department-charts', {
+      //   url: '/department-charts',
+      //   templateUrl: 'templates/department-charts.html',
+      //   controller:'DepartmentChartsCtrl'
+      // });
 
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/charts');
+    $urlRouterProvider.otherwise('/personal-charts');
 
   });
